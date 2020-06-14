@@ -4,13 +4,12 @@
       <div class="avatar-box">
         <img src="../assets/image/智能云.svg" alt="" />
       </div>
-      <div>
+      <div class="login-form">
         <!-- 登录表单区域 -->
         <el-form
           ref="loginFormRef"
           :rules="loginFormRules"
           :model="loginForm"
-          class="login-form"
           label-width="0px"
         >
           <!-- 用户名 -->
@@ -62,28 +61,27 @@
             >
           </el-form-item>
         </el-form>
-      </div>
-      <div class="register">
-        <el-link
-          style="position: absolute; left: 0px"
-          type="primary"
-          class="register-text"
-          href="http://localhost:8080/#/forgot"
-          >忘记密码？</el-link
-        >
-        <p
-          type="info"
-          style="position: absolute; right: 55px; bottom: 4px; font-size:12px; color:grey; width:70px; float:left; "
-        >
-          没有帐号?
-        </p>
-        <el-link
-          style="position: absolute; right: 0px"
-          type="primary"
-          class="register-text"
-          href="http://localhost:8080/#/signup"
-          >创建帐户</el-link
-        >
+        <div class="register">
+          <div class="register-forget">
+            <el-link type="primary" href="http://localhost:8080/#/forgot"
+              >忘记密码？</el-link
+            >
+          </div>
+
+          <div class="register-create">
+            
+            <div class="register-createlink">
+              <el-link type="primary" href="http://localhost:8080/#/signup"
+                >创建帐户</el-link
+              >
+            </div>
+            <div class="register-tips">
+              <p>
+                没有帐号?
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="login-footer">
@@ -128,14 +126,18 @@ export default {
         if (!valid) return;
         // 如果表单验证通过，发起登录请求
         this.$http.post("login", this.loginForm).then(resp => {
-          if (resp.data.code != 200) return this.$message.error(resp.data.message);
+          if (resp.data.code != 200)
+            return this.$message.error(resp.data.message);
           // 如果登陆成功
           this.$message.success("登录成功！");
           // 1. 将后台返回的token保存至客户端的sessionStorage中
           //  1.1 前后端分离用token，不用cookie。token只应在当前网站打开期间生效，所以将token保存在sessionStorage中
           console.log(resp);
           window.sessionStorage.setItem("token", resp.data.data.token);
-          window.sessionStorage.setItem("username", resp.data.data.user.username);
+          window.sessionStorage.setItem(
+            "username",
+            resp.data.data.user.username
+          );
           // 2. 跳转到管理后台主页，地址为/home
           this.$router.push("/home");
         });
@@ -152,18 +154,22 @@ export default {
 // 加上scoped，只会在当前节点生效
 <style lang="less" scoped>
 .login-container {
+  position: relative;
   background-color: #fafafa;
+  width: 100%;
   height: 100%;
+  border: 1px solid #fafafa;
+  margin: 0px;
+  overflow: auto;
 }
 .login-box {
   width: 450px;
-  height: 320px;
+  height: 350px;
   background-color: #fff;
+  border: 1px solid white;
   border-radius: 3px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin: 150px auto 50px;
+  box-sizing: border-box;
 
   .avatar-box {
     height: 130px;
@@ -172,9 +178,8 @@ export default {
     border-radius: 50%;
     padding: 10px;
     box-shadow: 0 0 10px #ddd;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin: -65px auto 10px;
     background-color: #fff;
     img {
       width: 100%;
@@ -195,31 +200,46 @@ export default {
   letter-spacing: 10px;
 }
 .login-form {
-  position: absolute;
-  bottom: 0px;
+  position: relative;
   width: 100%;
   padding: 20px 20px;
   box-sizing: border-box;
 }
 .register {
-  position: absolute;
-  width: 410px;
+  width: 100%;
   height: 40px;
-  bottom: 0px;
-  right: 20px;
+  position: relative;
   box-sizing: border-box;
-  padding: 10px 10px;
-}
-p {
-  color: lightgrey;
-  font-size: 12px;
-  text-align: center;
-  margin: 8px 0px;
+  .register-forget {
+    height: 40px;
+    float: left;
+  }
+  .register-create {
+    height: 40px;
+    float: right;
+    .register-tips {
+      height: 40px;
+      display: block;
+      float: right;
+      color: lightgrey;
+      font-size: 12px;
+      text-align: center;
+      margin-right: 5px;
+      margin-top: -7px;
+    }
+    .register-createlink {
+      height: 40px;
+      float: right;
+    }
+  }
 }
 .login-footer {
-  position: absolute;
-  bottom: 0px;
   width: 100%;
   height: 80px;
+  > p {
+    color: lightgrey;
+    font-size: 12px;
+    text-align: center;
+  }
 }
 </style>

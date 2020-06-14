@@ -58,11 +58,12 @@ export default {
     // 提交表单
     onSubmit() {
       this.$message({
-          showClose: true,
-          duration: 0,
-          message: '注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。',
-          type: 'success'
-        });
+        showClose: true,
+        duration: 0,
+        message:
+          "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
+        type: "success"
+      });
       console.log(this.registForm);
       this.$http.post("signup", this.registForm).then(resp => {
         console.log(resp);
@@ -71,8 +72,9 @@ export default {
         // 如果登陆成功
         this.$message({
           showClose: true,
-          message: '注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。',
-          type: 'success'
+          message:
+            "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
+          type: "success"
         });
       });
     },
@@ -91,10 +93,16 @@ html {
     "微软雅黑", tahoma, sans-serif;
   line-height: 1.5;
   color: #333;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .regist-container {
   background-color: #fafafa;
+  width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
 }
 .regist-box {
   width: 500px;
@@ -102,24 +110,25 @@ html {
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 3px;
-  margin-top: 30px;
-  position: absolute;
-  padding: 20px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  border-radius: 8px;
+  margin: 0 auto 20px;
+  padding: 17px 40px 40px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-sizing: border-box;
 }
 .regist-footer {
-  position: absolute;
+  position: relative;
   bottom: 0px;
   width: 100%;
-  height: 8%;
+  height: 80px;
   box-sizing: border-box;
   > p {
     color: lightgrey;
     font-size: 12px;
     text-align: center;
-    margin: 8px 0px;
+    margin: 13px 0px;
   }
 }
 .single-title {
@@ -135,7 +144,7 @@ html {
 .logo-section {
   width: 100%;
   text-align: center;
-  position: absolute;
+  position: relative;
   box-sizing: border-box;
 }
 </style>
