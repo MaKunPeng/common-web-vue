@@ -1,9 +1,10 @@
 <template>
   <div class="login-container">
     <div class="login-box">
-      <div class="avatar-box">
+      <!-- <div class="avatar-box">
         <img src="../assets/image/智能云.svg" alt="" />
-      </div>
+      </div> -->
+      <div class="logo">科学炼丹机器人</div>
       <div class="login-form">
         <!-- 登录表单区域 -->
         <el-form
@@ -16,7 +17,7 @@
           <el-form-item prop="username">
             <el-input
               v-model="loginForm.username"
-              prefix-icon="el-icon-user-solid"
+              prefix-icon="iconfont icon-yonghu"
               placeholder="用户名/邮箱"
             ></el-input>
           </el-form-item>
@@ -24,9 +25,9 @@
           <el-form-item v-if="visible" prop="password">
             <el-input
               v-model="loginForm.password"
-              prefix-icon="el-icon-lock"
+              prefix-icon="iconfont icon-mima"
               placeholder="密码"
-              style="display: inline-block;"
+              style="display: inline-block; color: white"
               type="password"
             >
               <i
@@ -63,7 +64,7 @@
         </el-form>
         <div class="register">
           <div class="register-forget">
-            <el-link type="primary" href="http://localhost:8080/#/forgot"
+            <el-link :underline="false" type="primary" href="http://localhost:8080/#/forgot"
               >忘记密码？</el-link
             >
           </div>
@@ -71,7 +72,7 @@
           <div class="register-create">
             
             <div class="register-createlink">
-              <el-link type="primary" href="http://localhost:8080/#/signup"
+              <el-link :underline="false" type="primary" href="http://localhost:8080/#/signup"
                 >创建帐户</el-link
               >
             </div>
@@ -85,13 +86,14 @@
       </div>
     </div>
     <div class="login-footer">
-      <p id="f1">Copyright &copy; Your Company 2020.</p>
-      <p id="f2">如有问题，请联系：mkptning@163.com</p>
+      <p id="f1">Copyright &copy; Our Company 2020.</p>
+      <p id="f2">如有问题，请联系：makunpeng1231@gmail.com</p>
     </div>
   </div>
 </template>
 
 <script>
+import '../assets/css/user/iconfont.css';
 export default {
   data() {
     return {
@@ -155,7 +157,8 @@ export default {
 <style lang="less" scoped>
 .login-container {
   position: relative;
-  background-color: #fafafa;
+  // background-color: #fafafa;
+  background-image: url(../assets/image/login_background.jpg);
   width: 100%;
   height: 100%;
   border: 1px solid #fafafa;
@@ -165,10 +168,11 @@ export default {
 .login-box {
   width: 450px;
   height: 350px;
-  background-color: #fff;
-  border: 1px solid white;
+  // background-color: #fff;
+  background-color:  rgba(255, 255, 255, 0);
+  // border: 1px solid white;
   border-radius: 3px;
-  margin: 150px auto 50px;
+  margin: 250px auto 50px;
   box-sizing: border-box;
 
   .avatar-box {
@@ -187,6 +191,14 @@ export default {
       border-radius: 50%;
     }
   }
+
+  .logo {
+    font-size: 40px;
+    font-family: '';
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
 .btns {
   display: flex;
@@ -199,11 +211,48 @@ export default {
   font-weight: 700;
   letter-spacing: 10px;
 }
+.icon-eye:before {
+  content: "\eab4";
+  color: white;
+}
+
+.icon-eye1:before {
+  content: "\e612";
+  color: white;
+}
+
 .login-form {
   position: relative;
   width: 100%;
   padding: 20px 20px;
   box-sizing: border-box;
+
+ /deep/ .el-input {
+    height: 50px;
+ } 
+
+  /deep/ .el-input__inner {
+    
+    border-radius: 20px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /deep/ .el-input__inner::-webkit-input-placeholder {
+      color: white;
+  }
+
+  /deep/ .icon-yonghu:before {
+    content: "\e633";
+    color: white;
+  }
+
+  /deep/ .icon-mima:before {
+    content: "\e703";
+    color: white;
+  }
 }
 .register {
   width: 100%;
@@ -213,6 +262,7 @@ export default {
   .register-forget {
     height: 40px;
     float: left;
+    padding-left: 5px;
   }
   .register-create {
     height: 40px;
@@ -231,6 +281,14 @@ export default {
       height: 40px;
       float: right;
     }
+  }
+
+  /deep/ .el-link.el-link--primary {
+    color: #dcdfe6;
+  }
+
+  /deep/ .el-link.el-link--primary:hover {
+    color: white;
   }
 }
 .login-footer {

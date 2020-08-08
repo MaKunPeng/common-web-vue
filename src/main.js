@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import "./plugins/element.js";
-import "./assets/css/global.css";
+import "./assets/css/global.less";
 // 全局引用axios
 import axios from "axios";
 import './assets/css/eye/iconfont.css';
