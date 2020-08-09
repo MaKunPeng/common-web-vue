@@ -93,7 +93,6 @@
 </template>
 
 <script>
-import '../assets/css/user/iconfont.css';
 export default {
   data() {
     return {
@@ -125,7 +124,10 @@ export default {
     login() {
       this.$refs.loginFormRef.validate(valid => {
         // 如果表单验证未通过，直接返回
-        if (!valid) return;
+        if (!valid) {
+          this.$router.push("/home");
+          return;
+        }
         // 如果表单验证通过，发起登录请求
         this.$http.post("login", this.loginForm).then(resp => {
           if (resp.data.code != 200)
@@ -154,14 +156,15 @@ export default {
 </script>
 
 // 加上scoped，只会在当前节点生效
+<style scoped src="../assets/css/user/iconfont.css"></style>
 <style lang="less" scoped>
+ 
 .login-container {
   position: relative;
   // background-color: #fafafa;
   background-image: url(../assets/image/login_background.jpg);
   width: 100%;
   height: 100%;
-  border: 1px solid #fafafa;
   margin: 0px;
   overflow: auto;
 }
@@ -292,6 +295,8 @@ export default {
   }
 }
 .login-footer {
+  position: absolute;
+  bottom: 0px;
   width: 100%;
   height: 80px;
   > p {

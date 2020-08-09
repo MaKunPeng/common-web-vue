@@ -1,37 +1,45 @@
 <template>
   <div class="regist-container">
     <div class="logo-section">
-      <a>
+      <!-- <a>
         <img
           src="../assets/image/智能云.svg"
           width="100px"
           style="margin-top: 50px;"
           alt=""
         />
-      </a>
+      </a> -->
+      <div class="logo">科学炼丹机器人</div>
     </div>
 
     <div class="regist-box">
       <span class="single-title">创建帐户</span>
-      <el-form ref="form" :model="registForm" label-width="80px">
-        <el-form-item label="用户名">
+      <el-form
+        ref="registFormRef"
+        :model="registForm"
+        label-width="100px"
+        :rules="registFormRules"
+      >
+        <el-form-item label="用户名" prop="username">
           <el-input v-model="registForm.username"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱">
+        <el-form-item label="邮箱" prop="email">
           <el-input v-model="registForm.email"></el-input>
         </el-form-item>
-        <el-form-item label="密码">
+        <el-form-item label="密码" prop="password">
           <el-input type="password" v-model="registForm.password"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码">
+        <el-form-item label="确认密码" prop="confirmedPassword">
           <el-input
             type="password"
             v-model="registForm.confirmedPassword"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button @click="cancel">取消</el-button>
+          <el-button type="primary" @click="onSubmit" id="confirm"
+            >立即创建</el-button
+          >
+          <el-button @click="cancel" id="cancel">取消</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -50,101 +58,69 @@ export default {
         username: "",
         email: "",
         password: "",
-        confirmedPassword: ""
-      }
+        confirmedPassword: "",
+      },
+      // 验证规则
+      registFormRules: {
+        username: [
+          {
+            required: true,
+            message: "请输入用户名",
+            trigger: "change",
+          },
+        ],
+        email: [
+          {
+            required: true,
+            message: "请输入邮箱地址",
+            trigger: "change",
+          },
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "change" },
+        ],
+        confirmedPassword: [
+          { required: true, message: "请输入密码", trigger: "change" },
+        ],
+      },
     };
   },
   methods: {
     // 提交表单
     onSubmit() {
-      this.$message({
-        showClose: true,
-        duration: 0,
-        message:
-          "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
-        type: "success"
-      });
-      console.log(this.registForm);
-      this.$http.post("signup", this.registForm).then(resp => {
-        console.log(resp);
-        if (resp.data.code != 200)
-          return this.$message.error(resp.data.message);
-        // 如果登陆成功
+      this.$refs.registFormRef.validate() (valid => {
+        // 如果表单验证未通过，直接返回
+        if (!valid) return;
         this.$message({
           showClose: true,
+          duration: 0,
           message:
             "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
-          type: "success"
+          type: "success",
         });
-      });
+        console.log(this.registForm);
+        this.$http.post("signup", this.registForm).then((resp) => {
+          console.log(resp);
+          if (resp.data.code != 200)
+            return this.$message.error(resp.data.message);
+          // 如果登陆成功
+          this.$message({
+            showClose: true,
+            message:
+              "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
+            type: "success",
+          });
+        });
+        }
+      )
     },
     cancel() {
       this.$router.push("/login");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
-body,
-html {
-  height: 100%;
-  font-family: "Helvetica Neue", "Hiragino Sans GB", stheiti, "Microsoft Yahei",
-    "微软雅黑", tahoma, sans-serif;
-  line-height: 1.5;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.regist-container {
-  background-color: #fafafa;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: auto;
-}
-.regist-box {
-  width: 500px;
-  height: 400px;
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  position: relative;
-  border-radius: 8px;
-  margin: 0 auto 20px;
-  padding: 17px 40px 40px;
-  background: #fff;
-  border: 1px solid #eee;
-  box-sizing: border-box;
-}
-.regist-footer {
-  position: relative;
-  bottom: 0px;
-  width: 100%;
-  height: 80px;
-  box-sizing: border-box;
-  > p {
-    color: lightgrey;
-    font-size: 12px;
-    text-align: center;
-    margin: 13px 0px;
-  }
-}
-.single-title {
-  display: block;
-  font-size: 20px;
-  font-weight: 400;
-  text-align: center;
-  padding-bottom: 13px;
-  word-break: break-all;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 25px;
-}
-.logo-section {
-  width: 100%;
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-}
+@import "../assets/css/regist.less";
 </style>

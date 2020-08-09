@@ -1,0 +1,89 @@
+.home-container {
+  height: 100%;
+}
+.el-header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-top: 5px;
+  align-items: center;
+  color: black;
+  font-size: 18px;
+  font-family: Microsoft JhengHei;
+  box-shadow:  1px 0px 6px 0px rgba(39, 54, 78, 0.12);
+  z-index: 999;
+}
+
+.exit-tips {
+  position: absolute;
+  top:40px;
+  right: 10px;
+  color: whitesmoke;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: rgba(50, 50, 50, 0.9);
+  z-index: 1000;
+  display: none;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.sidemenu {
+    /deep/ .el-submenu__title {
+        height: 88px;
+        font-size: 22px !important;
+        background-color: #3d3d3d !important;
+        box-shadow:  1px 1px 2px 0px white;
+    }
+
+    /deep/ .el-menu-item {
+        height: 98px;
+        font-size: 20px !important;
+        background-color: #303133 !important;
+        box-shadow:  0px 0px 2px 0px white;
+        line-height: 98px;
+    }
+
+    /deep/ .el-menu-item.is-active {
+        height: 98px;
+        color: black !important;
+        font-size: 20px !important;
+        background-color: white !important;
+        line-height: 98px;
+    }
+
+    /deep/ .el-submenu .el-menu-item {
+        font-size: 14px !important;
+        height: 40px;
+        line-height: 40px;
+        background-color: #303133 !important;
+    }
+
+    /deep/ .el-aside {
+        background-color: #303133 !important;
+    }
+
+    /deep/ .el-menu-item-group__title {
+        background-color: #82848a !important;
+        color: white;
+    }
+}
+
+#exit-img {
+  cursor: pointer;
+}
+
+.el-aside {
+  background-color: #333744;
+}
+.el-main {
+  background-color: #fafafa;
+}
+
+.page {
+    height: 100%;
+    width: 100%;
+}
