@@ -38,13 +38,13 @@ export default {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  overflow: hidden;
+  padding-top: 30px;
+  min-width: 1200px
 }
 
 .panel {
   position: relative;
   margin:0px auto;
-  margin-top: 30px;
   box-shadow: 0px 2px 6px 0px rgba(9, 2, 32, 0.4);
   width: 1200px;
   height: 800px;
