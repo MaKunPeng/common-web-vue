@@ -3,16 +3,11 @@
     <div class="login-box">
       <!-- <div class="avatar-box">
         <img src="../assets/image/智能云.svg" alt="" />
-      </div> -->
-      <div class="logo">科学炼丹机器人</div>
+      </div>-->
+      <div class="logo">DeepMotion</div>
       <div class="login-form">
         <!-- 登录表单区域 -->
-        <el-form
-          ref="loginFormRef"
-          :rules="loginFormRules"
-          :model="loginForm"
-          label-width="0px"
-        >
+        <el-form ref="loginFormRef" :rules="loginFormRules" :model="loginForm" label-width="0px">
           <!-- 用户名 -->
           <el-form-item prop="username">
             <el-input
@@ -46,40 +41,32 @@
               placeholder="密码"
               style="display: inline-block;"
               type="text"
-              ><i
+            >
+              <i
                 slot="suffix"
                 title="隐藏密码"
                 class="iconfont icon-eye"
                 style="cursor:pointer"
                 @click="changePwdVisible('hide')"
-              ></i
-            ></el-input>
+              ></i>
+            </el-input>
           </el-form-item>
           <!-- 按钮 -->
           <el-form-item class="btns">
-            <el-button class="login-Btn" type="primary" @click="login"
-              >登录</el-button
-            >
+            <el-button class="login-Btn" type="primary" @click="login">登录</el-button>
           </el-form-item>
         </el-form>
         <div class="register">
           <div class="register-forget">
-            <el-link :underline="false" type="primary" href="http://localhost:8080/#/forgot"
-              >忘记密码？</el-link
-            >
+            <router-link :to="'/forgot'">忘记密码？</router-link>
           </div>
 
           <div class="register-create">
-            
             <div class="register-createlink">
-              <el-link :underline="false" type="primary" href="http://localhost:8080/#/signup"
-                >创建帐户</el-link
-              >
+              <router-link :to="'/signup'">创建帐户</router-link>
             </div>
             <div class="register-tips">
-              <p>
-                没有帐号?
-              </p>
+              <p>没有帐号?</p>
             </div>
           </div>
         </div>
@@ -136,7 +123,6 @@ export default {
           this.$message.success("登录成功！");
           // 1. 将后台返回的token保存至客户端的sessionStorage中
           //  1.1 前后端分离用token，不用cookie。token只应在当前网站打开期间生效，所以将token保存在sessionStorage中
-          console.log(resp);
           window.sessionStorage.setItem("token", resp.data.data.token);
           window.sessionStorage.setItem(
             "username",
@@ -158,7 +144,6 @@ export default {
 // 加上scoped，只会在当前节点生效
 <style scoped src="../assets/css/user/iconfont.css"></style>
 <style lang="less" scoped>
- 
 .login-container {
   position: relative;
   // background-color: #fafafa;
@@ -172,7 +157,7 @@ export default {
   width: 450px;
   height: 350px;
   // background-color: #fff;
-  background-color:  rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   // border: 1px solid white;
   border-radius: 3px;
   margin: 250px auto 50px;
@@ -197,7 +182,7 @@ export default {
 
   .logo {
     font-size: 40px;
-    font-family: '';
+    font-family: "";
     color: #fff;
     text-align: center;
     margin-bottom: 20px;
@@ -230,12 +215,11 @@ export default {
   padding: 20px 20px;
   box-sizing: border-box;
 
- /deep/ .el-input {
+  /deep/ .el-input {
     height: 50px;
- } 
+  }
 
   /deep/ .el-input__inner {
-    
     border-radius: 20px;
     height: 50px;
     line-height: 50px;
@@ -244,7 +228,7 @@ export default {
   }
 
   /deep/ .el-input__inner::-webkit-input-placeholder {
-      color: white;
+    color: white;
   }
 
   /deep/ .icon-yonghu:before {
@@ -262,6 +246,13 @@ export default {
   height: 40px;
   position: relative;
   box-sizing: border-box;
+  a {
+      text-decoration: none;
+      color: #ecf5ff;
+    }
+  a:hover {
+    color: royalblue;
+  }
   .register-forget {
     height: 40px;
     float: left;
@@ -270,6 +261,7 @@ export default {
   .register-create {
     height: 40px;
     float: right;
+
     .register-tips {
       height: 40px;
       display: block;

@@ -98,9 +98,7 @@ export default {
             "注册成功！将会有一封激活邮件发送至您的邮箱，请点击激活链接激活后登录。",
           type: "success",
         });
-        console.log(this.registForm);
         this.$http.post("signup", this.registForm).then((resp) => {
-          console.log(resp);
           if (resp.data.code != 200)
             return this.$message.error(resp.data.message);
           // 如果登陆成功
