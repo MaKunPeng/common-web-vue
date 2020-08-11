@@ -1,28 +1,45 @@
 <template>
   <el-container class="home-container">
-    <el-header style="height:44px">
-      <div>
-        <span style="margin-left: 10px">AI后台智能引擎</span>
+    <el-header style="height:60px">
+      <div class="home-logo">
+        <span id="logo-top">深情</span>
+        <span id="logo-bottom">DeepMotion</span>
       </div>
-      <span>[{{ username }}，欢迎你]</span>
-      <!-- <el-button type="info" @click="logout">退出</el-button> -->
       <div>
-        <img
-          id="exit-img"
-          @mouseenter="tipsHover"
-          @mouseleave="tipsLeave"
-          @click="logout"
-          height="20px"
-          src="../assets/image/tuichu.svg"
-        />
-        <div class="exit-tips" ref="exitTips">退出</div>
+        <img src="../assets/image/horn.svg" height="25px" alt="">
+        <span>【公告】demo施工中</span>
+      </div>
+      <div>
+        <el-input class="search" prefix-icon="el-icon-search"></el-input>
+      </div>
+      <div class="right-banner">
+        <div>
+          <img src="" alt="">
+        </div>
+        <div class="vLine"></div>
+        <div>
+          <span>我的</span>
+        </div>
+        <div class="vLine"></div>
+        <div>
+          <img src="../assets/image/lingdang.svg" height="25px" alt="">
+          <img
+            id="exit-img"
+            @mouseenter="tipsHover"
+            @mouseleave="tipsLeave"
+            @click="logout"
+            height="20px"
+            src="../assets/image/tuichu.svg"
+          />
+          <div class="exit-tips" ref="exitTips">退出</div>
+        </div>
       </div>
     </el-header>
     <el-container class="sidemenu">
       <el-aside width="200px">
         <el-menu
           background-color="#333744"
-          text-color="#fff"
+          text-color="black"
           :default-active=activeIndex
           class="el-menu-vertical-demo"
           :class="{'router-link-exact-active':ind == index}"
@@ -30,21 +47,6 @@
           @close="handleClose"
           @select="handleSelect"
         >
-          <!-- <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>管理台</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu> -->
           <el-menu-item index="admin">
             <i class="el-icon-user"></i>
             <span slot="title">管理台</span>

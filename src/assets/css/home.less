@@ -1,20 +1,42 @@
 .home-container {
   height: 100%;
   position: relative;
+  padding: 0px;
+  font-family: "Microsoft Yahei" !important;
 }
 .el-header {
   background-color: white;
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  padding-left: 5px;
-  padding-top: 5px;
   align-items: center;
   color: black;
-  font-size: 18px;
-  font-family: Microsoft JhengHei;
+  font-size: 14px;
   box-shadow:  1px 0px 6px 0px rgba(39, 54, 78, 0.12);
   z-index: 999;
+  padding: 0px ;
+  
+  .home-logo {
+    height: 100%;
+    width: 200px;
+    font-family: "Microsoft Yahei";
+    background-color: rgb(112, 104, 225);
+    color: white;
+    margin-left: 0px;
+    
+    #logo-top {
+      font-size: 18px;
+      line-height: 30px;
+      text-align: center;
+      display: block;
+    }
+
+    #logo-bottom {
+      line-height: 30px;
+      text-align: center;
+      display: block;
+    }
+  }
 }
 
 .exit-tips {
@@ -33,43 +55,37 @@
 }
 
 .sidemenu {
+    font-family: "Microsoft Yahei" !important;
+
+    /deep/ .el-menu {
+      background-color: white !important;
+    }
+    
     /deep/ .el-submenu__title {
         height: 88px;
         font-size: 22px !important;
-        background-color: #3d3d3d !important;
         box-shadow:  1px 1px 2px 0px white;
     }
 
     /deep/ .el-menu-item {
-        height: 98px;
-        font-size: 20px !important;
-        background-color: #303133 !important;
-        box-shadow:  0px 0px 2px 0px white;
-        line-height: 98px;
+        background-color: white !important;
+        height: 60px;
+        font-size: 16px !important;
+        box-shadow:  0px 0px 2px 0px lightgray;
+        line-height: 60px;
     }
 
     /deep/ .el-menu-item.is-active {
-        height: 98px;
+        height: 60px;
         color: black !important;
-        font-size: 20px !important;
-        background-color: white !important;
-        line-height: 98px;
-    }
-
-    /deep/ .el-submenu .el-menu-item {
-        font-size: 14px !important;
-        height: 40px;
-        line-height: 40px;
-        background-color: #303133 !important;
+        font-size: 16px !important;
+        line-height: 60px;
+        background-color: lightskyblue !important;
+        border-radius: 13px;
     }
 
     /deep/ .el-aside {
-        background-color: #303133 !important;
-    }
-
-    /deep/ .el-menu-item-group__title {
-        background-color: #82848a !important;
-        color: white;
+        background-color: white;
     }
 }
 
@@ -77,9 +93,6 @@
   cursor: pointer;
 }
 
-.el-aside {
-  background-color: #333744;
-}
 .el-main {
   background-color: #fafafa;
 }
@@ -87,4 +100,17 @@
 .page {
     height: 100%;
     width: 100%;
+}
+
+.right-banner {
+  display: flex;
+  vertical-align: cen;
+}
+
+.vLine {
+  border-left: solid 2px #ccc;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 15px;
 }

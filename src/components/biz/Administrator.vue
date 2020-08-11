@@ -1,6 +1,6 @@
 <template>
   <div class="admin-container">
-    <el-input class="search" prefix-icon="el-icon-search"></el-input>
+    <!-- <el-input class="search" prefix-icon="el-icon-search"></el-input> -->
   </div>
 </template>
 
