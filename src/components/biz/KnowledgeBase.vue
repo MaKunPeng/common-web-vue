@@ -34,12 +34,10 @@ export default {
 <style lang="less" scoped>
 .base-container {
   position: relative;
-  background-color: #fafafa;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   padding-top: 30px;
-  min-width: 1200px
 }
 
 .panel {

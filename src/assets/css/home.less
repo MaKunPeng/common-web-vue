@@ -3,8 +3,13 @@
   position: relative;
   padding: 0px;
   font-family: "Microsoft Yahei" !important;
+
+  /deep/ .el-aside {
+    box-shadow: 1px 0px 6px 0px rgba(39, 54, 78, 0.12);
+  }
 }
 .el-header {
+  padding: 0px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -14,16 +19,16 @@
   font-size: 14px;
   box-shadow:  1px 0px 6px 0px rgba(39, 54, 78, 0.12);
   z-index: 999;
-  padding: 0px ;
   
   .home-logo {
     height: 100%;
     width: 200px;
+    min-width: 200px;
     font-family: "Microsoft Yahei";
     background-color: rgb(112, 104, 225);
     color: white;
     margin-left: 0px;
-    
+    margin-right: 0px;
     #logo-top {
       font-size: 18px;
       line-height: 30px;
@@ -100,11 +105,13 @@
 .page {
     height: 100%;
     width: 100%;
+    min-width: 1200px;
 }
 
 .right-banner {
+  height: 100%;
   display: flex;
-  vertical-align: cen;
+  align-items: center;
 }
 
 .vLine {
@@ -112,5 +119,47 @@
   height: 20px;
   vertical-align: middle;
   display: inline-block;
-  margin-top: 15px;
+}
+.right-banner .widget {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.right-banner .widget > span {
+  font-size: 17px;
+  font-weight: 500;
+  min-width: 34px;
+}
+
+.left-banner {
+  display: inline-block;
+  height: 100%;
+  min-width: 200px;
+  flex-basis: 38%;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.left-banner > div {
+  display: inline-block;
+  line-height: 60px;
+}
+
+.left-banner > :first-child {
+  img {
+    position: relative;
+    height: 25px;
+    top: 6px;
+  }
+}
+
+.banner-search {
+  height: 100%;
+  flex-basis: 40%;
+  display: flex;
+  align-items: center;
+  
+  .search-box {
+    width: 400px
+  }
 }

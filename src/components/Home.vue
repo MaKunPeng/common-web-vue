@@ -5,24 +5,28 @@
         <span id="logo-top">深情</span>
         <span id="logo-bottom">DeepMotion</span>
       </div>
-      <div>
-        <img src="../assets/image/horn.svg" height="25px" alt="">
-        <span>【公告】demo施工中</span>
+      <div class="left-banner">
+        <div>
+          <img src="../assets/image/horn.svg"/>
+        </div>
+        <div>
+          <span>【公告】demo施工中</span>
+        </div>
       </div>
-      <div>
-        <el-input class="search" prefix-icon="el-icon-search"></el-input>
+      <div class="banner-search">
+        <el-input placeholder="帮助说明" prefix-icon="el-icon-search" class="search-box"></el-input>
       </div>
       <div class="right-banner">
-        <div>
-          <img src="" alt="">
+        <div class="right-banner widget">
+          <img src="../assets/image/talk.svg" height="35px" />
         </div>
         <div class="vLine"></div>
-        <div>
+        <div class="right-banner widget">
           <span>我的</span>
         </div>
         <div class="vLine"></div>
-        <div>
-          <img src="../assets/image/lingdang.svg" height="25px" alt="">
+        <div class="right-banner widget">
+          <img src="../assets/image/lingdang.svg" height="25px"/>
           <img
             id="exit-img"
             @mouseenter="tipsHover"
@@ -40,7 +44,7 @@
         <el-menu
           background-color="#333744"
           text-color="black"
-          :default-active=activeIndex
+          :default-active="activeIndex"
           class="el-menu-vertical-demo"
           :class="{'router-link-exact-active':ind == index}"
           @open="handleOpen"
@@ -74,9 +78,9 @@
         </el-menu>
       </el-aside>
       <el-container>
-          <div class="page">
-            <router-view> </router-view>
-          </div>
+        <div class="page">
+          <router-view></router-view>
+        </div>
         <!-- <el-footer>Footer</el-footer> -->
       </el-container>
     </el-container>
@@ -137,8 +141,8 @@ export default {
         default:
           break;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
