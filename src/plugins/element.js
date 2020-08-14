@@ -14,7 +14,13 @@ import {
   Menu,
   MenuItem,
   Submenu,
-  MenuItemGroup
+  MenuItemGroup,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Tooltip,
+  Drawer,
+  Badge
 } from "element-ui";
 
 Vue.use(Button);
@@ -31,4 +37,10 @@ Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.use(Submenu);
+Vue.use(Dropdown);
+Vue.use(DropdownItem);
+Vue.use(DropdownMenu);
+Vue.use(Tooltip);
+Vue.use(Drawer);
+Vue.use(Badge)
 Vue.prototype.$message = Message;

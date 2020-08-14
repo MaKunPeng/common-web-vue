@@ -149,15 +149,18 @@ export default {
   // background-color: #fafafa;
   background-image: url(../assets/image/login_background.jpg);
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   margin: 0px;
   overflow: auto;
 }
 .login-box {
+  position: relative;
   width: 450px;
   height: 350px;
   // background-color: #fff;
   background-color: rgba(255, 255, 255, 0);
+  background-repeat: round;
   // border: 1px solid white;
   border-radius: 3px;
   margin: 250px auto 50px;
@@ -288,6 +291,7 @@ export default {
 }
 .login-footer {
   position: absolute;
+  clear: both;
   bottom: 0px;
   width: 100%;
   height: 80px;

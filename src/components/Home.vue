@@ -7,7 +7,7 @@
       </div>
       <div class="left-banner">
         <div>
-          <img src="../assets/image/horn.svg"/>
+          <img src="../assets/image/horn.svg" />
         </div>
         <div>
           <span>【公告】demo施工中</span>
@@ -17,25 +17,56 @@
         <el-input placeholder="帮助说明" prefix-icon="el-icon-search" class="search-box"></el-input>
       </div>
       <div class="right-banner">
-        <div class="right-banner widget">
-          <img src="../assets/image/talk.svg" height="35px" />
-        </div>
+        <!-- 聊天机器人 -->
+        <el-tooltip class="item" effect="dark" content="聊天机器人" placement="bottom">
+          <div @click="drawer=true" class="right-banner widget">
+            <img src="../assets/image/talk.svg" height="35px" />
+          </div>
+        </el-tooltip>
+        <el-drawer
+          title="我是标题"
+          :visible.sync="drawer"
+          direction="ttb"
+          :withHeader="false"
+          size="50%"
+        >这是聊天机器人</el-drawer>
+
         <div class="vLine"></div>
         <div class="right-banner widget">
           <span>我的</span>
         </div>
         <div class="vLine"></div>
-        <div class="right-banner widget">
-          <img src="../assets/image/lingdang.svg" height="25px"/>
-          <img
-            id="exit-img"
-            @mouseenter="tipsHover"
-            @mouseleave="tipsLeave"
-            @click="logout"
-            height="20px"
-            src="../assets/image/tuichu.svg"
-          />
-          <div class="exit-tips" ref="exitTips">退出</div>
+        <div class="right-banner user-region">
+          <!-- 消息通知框 -->
+          <div id="messageBox">
+            <el-dropdown trigger="click" @command="userManage" placement="bottom">
+              <el-badge :value="12" class="item">
+                <img class="el-dropdown-link" src="../assets/image/lingdang.svg" height="25px" />
+              </el-badge>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item icon="el-icon-s-tools">
+                  <div>asdfasdfasdf</div>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+          
+          <!-- 用户管理框 -->
+          <div>
+            <el-dropdown trigger="click" @command="userManage" placement="bottom">
+              <img
+                id="exit-img"
+                ref="userAvatar"
+                class="el-dropdown-link"
+                height="30px"
+                src="../assets/image/banner-user.svg"
+              />
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item icon="el-icon-s-tools">帐号设置</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-close">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
         </div>
       </div>
     </el-header>
@@ -81,7 +112,6 @@
         <div class="page">
           <router-view></router-view>
         </div>
-        <!-- <el-footer>Footer</el-footer> -->
       </el-container>
     </el-container>
   </el-container>
@@ -92,6 +122,7 @@ export default {
   data() {
     return {
       username: "null",
+      drawer: false,
       activeIndex: this.$route.name
     };
   },
@@ -100,22 +131,12 @@ export default {
   },
   methods: {
     // 用户退出
-    logout() {
+    userManage() {
       // 清空token
       window.sessionStorage.clear();
       // 重定向至/login
       this.$router.push("/login");
     },
-
-    tipsHover() {
-      console.log("xxxx");
-      this.$refs.exitTips.style.display = "block";
-    },
-
-    tipsLeave() {
-      this.$refs.exitTips.style.display = "none";
-    },
-
     // 导航菜单选择
     handleSelect(key, keyPath) {
       console.log(keyPath);
