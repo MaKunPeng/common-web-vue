@@ -10,7 +10,7 @@
           <img src="../assets/image/horn.svg" />
         </div>
         <div>
-          <span>【公告】demo施工中</span>
+          <span ref="notice">【公告】demo施工中</span>
         </div>
       </div>
       <div class="banner-search">
@@ -139,7 +139,7 @@ export default {
     },
     // 导航菜单选择
     handleSelect(key, keyPath) {
-      console.log(keyPath);
+      var path = keyPath; // eslint-disable-line no-unused-vars
       switch (key) {
         case "admin":
           this.$router.push("admin");
